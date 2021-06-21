@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B99BD692680A24C00AA5E6F /* reg3Vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BD682680A24C00AA5E6F /* reg3Vc.swift */; };
+		0B99BD6B2680A26800AA5E6F /* reg41vc.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BD6A2680A26800AA5E6F /* reg41vc.swift */; };
+		0B99BD6D2680A2AB00AA5E6F /* reg2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B99BD6C2680A2AB00AA5E6F /* reg2VC.swift */; };
 		0BDBEBC7267DDF6B00811783 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDBEBC6267DDF6B00811783 /* AppDelegate.swift */; };
 		0BDBEBC9267DDF6B00811783 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BDBEBC8267DDF6B00811783 /* ViewController.swift */; };
 		0BDBEBCC267DDF6C00811783 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0BDBEBCA267DDF6C00811783 /* Main.storyboard */; };
@@ -17,6 +20,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0B99BD682680A24C00AA5E6F /* reg3Vc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reg3Vc.swift; sourceTree = "<group>"; };
+		0B99BD6A2680A26800AA5E6F /* reg41vc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = reg41vc.swift; sourceTree = "<group>"; };
+		0B99BD6C2680A2AB00AA5E6F /* reg2VC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = reg2VC.swift; sourceTree = "<group>"; };
 		0BDBEBC3267DDF6B00811783 /* V.R.Crearions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = V.R.Crearions.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0BDBEBC6267DDF6B00811783 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0BDBEBC8267DDF6B00811783 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -62,6 +68,9 @@
 				0BDBEBC8267DDF6B00811783 /* ViewController.swift */,
 				0BDBEBDA267DE6C300811783 /* Reg1vc.swift */,
 				0BDBEBCA267DDF6C00811783 /* Main.storyboard */,
+				0B99BD6C2680A2AB00AA5E6F /* reg2VC.swift */,
+				0B99BD682680A24C00AA5E6F /* reg3Vc.swift */,
+				0B99BD6A2680A26800AA5E6F /* reg41vc.swift */,
 				0BDBEBD8267DE54B00811783 /* Extensions.swift */,
 				0BDBEBCD267DDF6D00811783 /* Assets.xcassets */,
 				0BDBEBCF267DDF6D00811783 /* LaunchScreen.storyboard */,
@@ -145,6 +154,9 @@
 				0BDBEBD9267DE54B00811783 /* Extensions.swift in Sources */,
 				0BDBEBC7267DDF6B00811783 /* AppDelegate.swift in Sources */,
 				0BDBEBDB267DE6C300811783 /* Reg1vc.swift in Sources */,
+				0B99BD6D2680A2AB00AA5E6F /* reg2VC.swift in Sources */,
+				0B99BD692680A24C00AA5E6F /* reg3Vc.swift in Sources */,
+				0B99BD6B2680A26800AA5E6F /* reg41vc.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
