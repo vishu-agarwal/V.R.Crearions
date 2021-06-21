@@ -77,8 +77,13 @@ class Reg1vc: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-    extension reg2VC: UIImagePickerControllerDelegate,UINavigationControllerDelegate{
-        func imagePicker
+    extension reg2VC: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+        func imagePickerController(_picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
+            if let selectedImg = info[.originalImage] as? UIImage{
+                profile.image = selectImg
+            }
+            
+        }
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
