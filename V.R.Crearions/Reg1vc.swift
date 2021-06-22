@@ -10,17 +10,37 @@ import UIKit
 
 class Reg1vc: UIViewController {
 
-    private let profile:UIImagePickerController = {
+    //profile picture
+    private let profile: UIImagePickerController = {
         let prfl = UIImagePickerController()
         prfl.allowsEditing = false
         return prfl
     }()
+    private let imgVieew: UIImageView = {
+        let img = UIImageView()
+        img.contentMode = .scaleAspectFill
+        img.clipsToBounds = true
+        return img
+    }()
+    //... dotes to control page
+    private let pgCntrl: UIPageControl = {
+        let pg = UIPageControl()
+        pg.numberOfPages = 3
+        pg.currentPage = 1
+        pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
+        return pg
+    }()
+    @objc func handlePgCntrl (){
+        print(pgCntrl.currentPage)
+    }
+    
+    // toolbar slect image
     private let toolbar: UIToolbar = {
         let tool = UIToolbar()
         let close = UIBarButtonItem(barButtonSystemItem: .cancel, target: self, action: #selector(back))
-        let space = UIBarButtonItem(systemItem: .flexibleSpace)
+        let camera = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(cam))
         let gallery = UIBarButtonItem(barButtonSystemItem: .organize, target: self, action: #selector(galery))
-        tool.items = [close,space,gallery]
+        tool.items = [close,camera,gallery]
         return tool
     }()
     @objc func back(){
@@ -33,6 +53,24 @@ class Reg1vc: UIViewController {
             self.present(self.profile, animated: true)
         }
     }
+    @objc func cam(){
+        if UIImagePickerController.isSourceTypeAvailable(.camera)
+        {
+            profile.sourceType = .camera
+            DispatchQueue.main.async {
+                self.present(self.profile,animated: true)
+            }
+        }
+        else{
+            let alert = UIAlertController(title: "Warning !!", message: "camera not fount", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+                DispatchQueue.main.async {
+                    self.present(alert, animated: true, completion: nil)
+            }
+        }
+    }
+    
+    //textbox for enter name
     private let mytxt:UITextField = {
         let txt = UITextField()
         txt.placeholder = "Enter UserName !"
@@ -42,7 +80,7 @@ class Reg1vc: UIViewController {
         
         return txt
     }()
-   
+   //label for email
     private let mylbl : UILabel = {
         let lbl = UILabel()
         lbl.text = "Select Your Profile !"
@@ -68,40 +106,42 @@ class Reg1vc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(mytxt)
+        view.addSubview(pgCntrl)
         view.addSubview(toolbar)
+        
         view.addSubview(mybtn)
         view.addSubview(mylbl)
-        profile.delegate = self as! UIImagePickerControllerDelegate & UINavigationControllerDelegate
+        view.addSubview(imgVieew)
+        profile.delegate = self
         title = "Personal Information"
         //profile.delegate = self
         // Do any additional setup after loading the view.
     }
     
-    extension reg2VC: UIImagePickerControllerDelegate,UINavigationControllerDelegate {
-        func imagePickerController(_picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]){
-            if let selectedImg = info[.originalImage] as? UIImage{
-                profile.image = selectImg
-            }
-            
-        }
-    }
-    override func viewDidLayoutSubviews() {
+   
+    override func viewDidLayoutSubviews()
+    {
         super.viewDidLayoutSubviews()
-        let toolbar: CGFloat = view.safeAreaInsets.top + 40
-        toolbar.frame = CGRect()
-        mytxt.frame = CGRect(x:20,y:100,width:view.width - 40,height: 50)
+        //let toolbar: CGFloat = view.safeAreaInsets.top + 40
+        imgVieew.frame = CGRect(x: 20,y: 100,width: view.width - 40, height: 200)
+        mytxt.frame = CGRect(x: 20,y: imgVieew.bottom + 30, width: view.width - 40, height: 50)
         
         
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+}
+extension Reg1vc: UIImagePickerControllerDelegate,UINavigationControllerDelegate
+{
+    func imagePickerController(_ picker:UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any])
+    {
+        if let selectedImg = info[.originalImage] as? UIImage
+        {
+            imgVieew.image = selectedImg
+        }
+        picker.dismiss(animated: true)
     }
-    */
-
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController)
+    {
+        picker.dismiss(animated: true)
+        
+    }
 }
