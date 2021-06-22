@@ -10,14 +10,42 @@ import UIKit
 
 class reg3Vc: UIViewController {
 
-    
-    private let loader: UIActivityIndicatorView = {
-        let load = UIActivityIndicatorView()
-        //load.style = .larger
-        load.color = .white
-        load.startAnimating()
-        return load
+    private let dob:UIDatePicker = {
+        let date = UIDatePicker()
+        date.datePickerMode = .date
+        date.timeZone = TimeZone(secondsFromGMT: 0)
+        return date
     }()
+    
+    //... dotes to control page
+    private let pgCntrl: UIPageControl = {
+        let pg = UIPageControl()
+        pg.numberOfPages = 3
+        pg.currentPage = 0
+        pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
+        return pg
+    }()
+    @objc func handlePgCntrl (){
+        print(pgCntrl.currentPage)
+        if pgCntrl.currentPage == 0
+        {
+            let vc = Reg1vc()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if pgCntrl.currentPage == 1
+        {
+            let vc = reg2VC()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if pgCntrl.currentPage == 2
+        {
+            let vc = reg3Vc()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+    }
     //rating
     private let rating : UISlider = {
         let slide = UISlider()
@@ -38,6 +66,14 @@ class reg3Vc: UIViewController {
         disp.textAlignment = .center
         return disp
     }()
+    private let mybtn: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("NEXT", for: .normal)
+        btn.addTarget(self, action: #selector(nextfunc), for: .touchUpInside)
+        btn.backgroundColor = .blue
+        btn.layer.cornerRadius = 10
+        return btn
+    }()
     //end
     //toggle notification add label for it
     private let notify : UISwitch = {
@@ -50,15 +86,8 @@ class reg3Vc: UIViewController {
         // Do any additional setup after loading the view.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    override func viewDidLayoutSubviews() {
+        pgCntrl.frame = CGRect(x: 40,y: mytxtView.bottom + 5, width: view.width - 80, height: 60)
     }
-    */
 
 }

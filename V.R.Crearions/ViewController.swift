@@ -31,7 +31,7 @@ class ViewController: UIViewController {
         btn.setTitle("Register", for: .normal)
         btn.addTarget(self, action: #selector(reg), for: .touchUpInside)
         btn.backgroundColor = .blue
-        btn.layer.cornerRadius = 200
+        btn.layer.cornerRadius = 50
         return btn
     }()
     @objc func reg()

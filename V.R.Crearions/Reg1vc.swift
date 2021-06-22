@@ -26,12 +26,30 @@ class Reg1vc: UIViewController {
     private let pgCntrl: UIPageControl = {
         let pg = UIPageControl()
         pg.numberOfPages = 3
-        pg.currentPage = 1
+        pg.currentPage = 0
         pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
         return pg
     }()
     @objc func handlePgCntrl (){
         print(pgCntrl.currentPage)
+        if pgCntrl.currentPage == 0
+        {
+            let vc = Reg1vc()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if pgCntrl.currentPage == 1
+        {
+            let vc = reg2VC()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
+        else if pgCntrl.currentPage == 2
+        {
+            let vc = reg3Vc()
+            
+            navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     // toolbar slect image
@@ -69,7 +87,14 @@ class Reg1vc: UIViewController {
             }
         }
     }
-    
+    //textview for email
+    private let mytxtView:UITextView = {
+        let txtView = UITextView()
+        txtView.textColor = .blue
+        txtView.textAlignment = .center
+        
+        return txtView
+    }()
     //textbox for enter name
     private let mytxt:UITextField = {
         let txt = UITextField()
@@ -81,6 +106,13 @@ class Reg1vc: UIViewController {
         return txt
     }()
    //label for email
+    private let lblEmail : UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Enter your Email Id Below !"
+        lbl.textAlignment = .center
+        lbl.textColor = .white
+        return lbl
+    }()
     private let mylbl : UILabel = {
         let lbl = UILabel()
         lbl.text = "Select Your Profile !"
@@ -88,14 +120,7 @@ class Reg1vc: UIViewController {
         lbl.textColor = .white
         return lbl
     }()
-    private let mybtn: UIButton = {
-        let btn = UIButton()
-        btn.setTitle("NEXT", for: .normal)
-        btn.addTarget(self, action: #selector(nextfunc), for: .touchUpInside)
-        btn.backgroundColor = .blue
-        btn.layer.cornerRadius = 10
-        return btn
-    }()
+   
     @objc func nextfunc(){
         let vc = reg2VC()
         navigationController?.pushViewController(vc, animated: true)
@@ -105,11 +130,13 @@ class Reg1vc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+       view.backgroundColor = .blue
         view.addSubview(mytxt)
         view.addSubview(pgCntrl)
         view.addSubview(toolbar)
-        
+        view.addSubview(mytxtView)
         view.addSubview(mybtn)
+        view.addSubview(lblEmail)
         view.addSubview(mylbl)
         view.addSubview(imgVieew)
         profile.delegate = self
@@ -122,10 +149,17 @@ class Reg1vc: UIViewController {
     override func viewDidLayoutSubviews()
     {
         super.viewDidLayoutSubviews()
+        toolbar.frame = CGRect(x: 0,y: 63, width: view.width, height: 30)
         //let toolbar: CGFloat = view.safeAreaInsets.top + 40
-        imgVieew.frame = CGRect(x: 20,y: 100,width: view.width - 40, height: 200)
-        mytxt.frame = CGRect(x: 20,y: imgVieew.bottom + 30, width: view.width - 40, height: 50)
+        imgVieew.frame = CGRect(x: 20,y: toolbar.bottom + 20 ,width: view.width - 40, height: 200)
+        mylbl.frame = CGRect(x: 20,y: imgVieew.bottom + 10, width: view.width - 40, height: 50)
+        mytxt.frame = CGRect(x: 20,y: mylbl.bottom + 20, width: view.width - 40, height: 50)
+        lblEmail.frame = CGRect(x: 20,y: mytxt.bottom + 20, width: view.width - 40, height: 50)
+        mytxtView.frame = CGRect(x: 20,y: lblEmail.bottom + 10,width: view.width - 40, height: 50)
         
+        pgCntrl.frame = CGRect(x: 40,y: mytxtView.bottom + 5, width: view.width - 80, height: 60)
+       
+        //let tools: CGFloat = view.safeAreaInsets.top + 40
         
     }
 }
