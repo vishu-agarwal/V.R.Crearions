@@ -10,13 +10,45 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "V.R.Crearions/Reg1vc.swift"
-            timestampString = "646049245.950959"
+            timestampString = "646138240.230847"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
             endingLineNumber = "70"
             landmarkName = "galery()"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "V_R_Crearions.Reg1vc.galery() -&gt; ()"
+                  moduleName = "V.R.Crearions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dcs/Documents/GitHub/V.R.Crearions/V.R.Crearions/Reg1vc.swift"
+                  timestampString = "646138240.3036619"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "70"
+                  endingLineNumber = "70"
+                  offsetFromSymbolStart = "214">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in V_R_Crearions.Reg1vc.galery() -&gt; ()"
+                  moduleName = "V.R.Crearions"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/dcs/Documents/GitHub/V.R.Crearions/V.R.Crearions/Reg1vc.swift"
+                  timestampString = "646138240.306875"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "71"
+                  endingLineNumber = "71"
+                  offsetFromSymbolStart = "20">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

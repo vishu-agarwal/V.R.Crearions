@@ -9,8 +9,21 @@
 import UIKit
 
 class reg3Vc: UIViewController {
-
-    private let dob:UIDatePicker = {
+    private let mylbl : UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Choose Date To Attend Seminar :: "
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let lblprfl : UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Keep Profile Public ::  "
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let semDate:UIDatePicker = {
         let date = UIDatePicker()
         date.datePickerMode = .date
         date.timeZone = TimeZone(secondsFromGMT: 0)
@@ -21,7 +34,7 @@ class reg3Vc: UIViewController {
     private let pgCntrl: UIPageControl = {
         let pg = UIPageControl()
         pg.numberOfPages = 3
-        pg.currentPage = 0
+        pg.currentPage = 2
         pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
         return pg
     }()
@@ -74,7 +87,21 @@ class reg3Vc: UIViewController {
         btn.layer.cornerRadius = 10
         return btn
     }()
+    @objc func nextfunc()
+    {
+        let vc = reg41vc()
+        
+        navigationController?.pushViewController(vc, animated: true)
+    }
     //end
+    private let loader: UIActivityIndicatorView = {
+        let load = UIActivityIndicatorView()
+        //load.style = .larger
+        load.color = .white
+       // btn.addTarget(self, action: #selector(nextfunc), for: .touchUpInside)
+        load.startAnimating()
+        return load
+    }()
     //toggle notification add label for it
     private let notify : UISwitch = {
         let bell = UISwitch()
@@ -82,12 +109,25 @@ class reg3Vc: UIViewController {
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.addSubview(mybtn)
+        view.addSubview(loader)
+        view.addSubview(pgCntrl)
+        view.addSubview(rating)
+        view.addSubview(semDate)
+        view.addSubview(notify)
+        view.addSubview(mylbl)
         // Do any additional setup after loading the view.
     }
     
+    
     override func viewDidLayoutSubviews() {
-        pgCntrl.frame = CGRect(x: 40,y: mytxtView.bottom + 5, width: view.width - 80, height: 60)
+        mylbl.frame = CGRect(x: 40,y:100, width: view.width - 40, height: 30)
+        semDate.frame = CGRect(x: 40,y: mylbl.bottom + 5, width: view.width - 40, height: 50)
+        lblprfl.frame = CGRect(x: 40,y: semDate.bottom + 10, width: view.width - 40, height: 50)
+        notify.frame = CGRect(x: 100,y: semDate.bottom + 10, width: view.width - 40, height: 50)
+        rating.frame = CGRect(x: 40,y: lblprfl.bottom + 10, width: view.width - 40, height: 50)
+        loader.frame = CGRect(x: 40,y: rating.bottom + 15, width:  view.width - 20, height: 50)
+        pgCntrl.frame = CGRect(x: 40,y: loader.bottom + 10, width: view.width - 80, height: 60)
     }
 
 }

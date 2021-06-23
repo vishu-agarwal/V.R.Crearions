@@ -135,7 +135,7 @@ class Reg1vc: UIViewController {
         view.addSubview(pgCntrl)
         view.addSubview(toolbar)
         view.addSubview(mytxtView)
-        view.addSubview(mybtn)
+        
         view.addSubview(lblEmail)
         view.addSubview(mylbl)
         view.addSubview(imgVieew)
