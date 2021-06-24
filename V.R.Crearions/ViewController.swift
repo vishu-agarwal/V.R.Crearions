@@ -51,8 +51,8 @@ class ViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         vr.frame = CGRect(x: 20,y: 200,width:view.width - 40,height: 100)
-        mylbl.frame = CGRect(x:30,y: vr.bottom + 150,width:view.width - 40,height: 40)
-        mybtn.frame = CGRect(x:30,y:mylbl.bottom + 20,width:view.width - 40,height: 80)
+        mylbl.frame = CGRect(x:20,y: vr.bottom + 150,width:view.width - 40,height: 40)
+        mybtn.frame = CGRect(x:20,y:mylbl.bottom + 20,width:view.width - 40,height: 80)
     }
 
 }

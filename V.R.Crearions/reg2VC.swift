@@ -12,6 +12,7 @@ class reg2VC: UIViewController {
     
     private let gender: UISegmentedControl = {
         let gen = UISegmentedControl()
+    
         gen.insertSegment(withTitle:"Female",at:0,animated:true)
         gen.insertSegment(withTitle:"Male",at:1,animated:true)
         return gen
@@ -22,6 +23,38 @@ class reg2VC: UIViewController {
         let dwnld = UITabBarItem(tabBarSystemItem: .downloads, tag: 1)
         tabview.items = [dwnld,history]
         return tabview
+    }()
+    private let lblgen : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.text = "GENDER :: "
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let dipexp : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.text = ""
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let lblexp : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.text = "EXPRIENCE ::"
+        lbl.textAlignment = .center
+        
+        return lbl
+    }()
+    private let lblskill : UILabel = {
+        let lbl = UILabel()
+        lbl.textColor = .white
+        lbl.text = "Choose Your Skill :: "
+        lbl.textAlignment = .center
+        
+        return lbl
     }()
     //picker
     private let pick = UIPickerView()
@@ -55,22 +88,30 @@ class reg2VC: UIViewController {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
-   
+    
     private let exprnc: UIStepper = {
         let ex = UIStepper()
         ex.minimumValue = 0
         ex.maximumValue = 10
+        ex.addTarget(self, action: #selector(handleSteeper), for: .valueChanged)
         return ex
     }()
+    @objc func handleSteeper(){
+        
+        dipexp.text = exprnc.value.description
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+        view.backgroundColor = .black
         view.addSubview(pgCntrl)
         view.addSubview(exprnc)
         view.addSubview(tab)
         view.addSubview(gender)
-        
+        view.addSubview(lblexp)
+        view.addSubview(lblgen)
+        view.addSubview(lblskill)
         view.addSubview(pick)
+        view.addSubview(dipexp)
         pick.dataSource = self
         pick.delegate = self
         pick.backgroundColor = .white
@@ -79,11 +120,15 @@ class reg2VC: UIViewController {
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {
-        gender.frame = CGRect(x: 100,y: 200, width: view.width - 80 ,height:  60)
-        exprnc.frame = CGRect(x: 150, y: gender.bottom + 20,width: view.width - 80 ,height:  60)
-        pick.frame = CGRect(x: 50, y: exprnc.bottom + 20,width: view.width - 80 ,height:  60)
-        pgCntrl.frame = CGRect(x: 40,y: pick.bottom + 5, width: view.width - 80, height: 60)
-        let tabheight: CGFloat = view.safeAreaInsets.bottom + 40
+        lblgen.frame = CGRect(x: 40,y: 70, width: view.width - 50, height: 50)
+        gender.frame = CGRect(x: 30,y: lblgen.bottom + 20, width: view.width - 60 ,height:  70)
+        lblexp.frame = CGRect(x: 40,y: gender.bottom + 20, width: view.width - 80, height: 50)
+        exprnc.frame = CGRect(x: 30, y: lblexp.bottom + 20,width: view.width - 50 ,height: 150)
+        dipexp.frame = CGRect(x: 60, y: lblexp.bottom + 5,width: view.width - 50 ,height: 50)
+        lblskill.frame = CGRect(x: 40,y: exprnc.bottom + 20, width: view.width - 50, height: 50)
+        pick.frame = CGRect(x: 20, y: lblskill.bottom + 20,width: view.width - 60 ,height:  100)
+        pgCntrl.frame = CGRect(x: 40,y: pick.bottom + 20, width: view.width - 80, height: 80)
+        let tabheight: CGFloat = view.safeAreaInsets.bottom + 50
         tab.frame = CGRect(x: 0,y: view.height - tabheight , width: view.width , height: tabheight)
     }
 

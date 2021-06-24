@@ -13,6 +13,7 @@ class reg3Vc: UIViewController {
         let lbl = UILabel()
         lbl.text = "Choose Date To Attend Seminar :: "
         lbl.textAlignment = .center
+        lbl.textColor = .white
         
         return lbl
     }()
@@ -20,13 +21,14 @@ class reg3Vc: UIViewController {
         let lbl = UILabel()
         lbl.text = "Keep Profile Public ::  "
         lbl.textAlignment = .center
-        
+        lbl.textColor = .white
         return lbl
     }()
     private let semDate:UIDatePicker = {
         let date = UIDatePicker()
         date.datePickerMode = .date
         date.timeZone = TimeZone(secondsFromGMT: 0)
+        //date.textcolor = .white
         return date
     }()
     
@@ -35,6 +37,7 @@ class reg3Vc: UIViewController {
         let pg = UIPageControl()
         pg.numberOfPages = 3
         pg.currentPage = 2
+        pg.backgroundColor = .brown
         pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
         return pg
     }()
@@ -70,6 +73,10 @@ class reg3Vc: UIViewController {
     @objc func rate(){
         let res = Int(rating.value)
         disprate.text = String(res)
+        DispatchQueue.main.async {
+            self.loader.isHidden = !self.loader.isHidden
+            self.loader.isHidden ? self.loader.stopAnimating() : self.loader.startAnimating()
+        }
         
     }
     private let disprate : UILabel = {
@@ -96,7 +103,7 @@ class reg3Vc: UIViewController {
     //end
     private let loader: UIActivityIndicatorView = {
         let load = UIActivityIndicatorView()
-        //load.style = .larger
+        
         load.color = .white
        // btn.addTarget(self, action: #selector(nextfunc), for: .touchUpInside)
         load.startAnimating()
@@ -127,6 +134,7 @@ class reg3Vc: UIViewController {
         notify.frame = CGRect(x: 100,y: semDate.bottom + 10, width: view.width - 40, height: 50)
         rating.frame = CGRect(x: 40,y: lblprfl.bottom + 10, width: view.width - 40, height: 50)
         loader.frame = CGRect(x: 40,y: rating.bottom + 15, width:  view.width - 20, height: 50)
+        mybtn.frame = CGRect(x: 40, y: loader.bottom + 10,width: view.width - 20, height: 70)
         pgCntrl.frame = CGRect(x: 40,y: loader.bottom + 10, width: view.width - 80, height: 60)
     }
 

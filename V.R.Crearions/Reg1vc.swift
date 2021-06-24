@@ -130,7 +130,7 @@ class Reg1vc: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       view.backgroundColor = .blue
+       view.backgroundColor = .black
         view.addSubview(mytxt)
         view.addSubview(pgCntrl)
         view.addSubview(toolbar)
