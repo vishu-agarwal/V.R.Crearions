@@ -20,13 +20,15 @@ class reg41vc: UIViewController {
         let lbl = UILabel()
         lbl.text = "Thank You ! "
         lbl.textAlignment = .center
-        
+        lbl.textColor = .white
         return lbl
     }()
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(mylbl)
         view.addSubview(progressing)
+        view.backgroundColor = .black
+        title = "Submitted ! "
         // Do any additional setup after loading the view.
     }
     override func viewDidLayoutSubviews() {

@@ -29,6 +29,7 @@ class reg3Vc: UIViewController {
         date.datePickerMode = .date
         date.timeZone = TimeZone(secondsFromGMT: 0)
         //date.textcolor = .white
+        date.backgroundColor = .white
         return date
     }()
     
@@ -37,7 +38,7 @@ class reg3Vc: UIViewController {
         let pg = UIPageControl()
         pg.numberOfPages = 3
         pg.currentPage = 2
-        pg.backgroundColor = .brown
+        //pg.backgroundColor = .gray
         pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
         return pg
     }()
@@ -120,22 +121,24 @@ class reg3Vc: UIViewController {
         view.addSubview(loader)
         view.addSubview(pgCntrl)
         view.addSubview(rating)
-        view.addSubview(semDate)
+        //view.addSubview(semDate)
         view.addSubview(notify)
         view.addSubview(mylbl)
+        view.backgroundColor = .black
+        //title = "Basic Information"
         // Do any additional setup after loading the view.
     }
     
     
     override func viewDidLayoutSubviews() {
-        mylbl.frame = CGRect(x: 40,y:100, width: view.width - 40, height: 30)
-        semDate.frame = CGRect(x: 40,y: mylbl.bottom + 5, width: view.width - 40, height: 50)
-        lblprfl.frame = CGRect(x: 40,y: semDate.bottom + 10, width: view.width - 40, height: 50)
-        notify.frame = CGRect(x: 100,y: semDate.bottom + 10, width: view.width - 40, height: 50)
-        rating.frame = CGRect(x: 40,y: lblprfl.bottom + 10, width: view.width - 40, height: 50)
-        loader.frame = CGRect(x: 40,y: rating.bottom + 15, width:  view.width - 20, height: 50)
-        mybtn.frame = CGRect(x: 40, y: loader.bottom + 10,width: view.width - 20, height: 70)
-        pgCntrl.frame = CGRect(x: 40,y: loader.bottom + 10, width: view.width - 80, height: 60)
+        mylbl.frame = CGRect(x: 35,y:100, width: view.width - 40, height: 30)
+       // semDate.frame = CGRect(x: 20,y: mylbl.bottom + 10, width: view.width - 40, height: 70)
+        lblprfl.frame = CGRect(x: 30,y: mylbl.bottom + 20, width: view.width - 40, height: 30)
+        //notify.frame = CGRect(x: 40,y: semDate.bottom + 15, width: view.width - 80, height: 50)
+        //rating.frame = CGRect(x: 20,y: lblprfl.bottom + 10, width: view.width - 70, height: 50)
+        //loader.frame = CGRect(x: 40,y: rating.bottom + 10, width:  view.width - 30, height: 50)
+        //mybtn.frame = CGRect(x: 30, y: loader.bottom + 10,width: view.width - 20, height: 70)
+        pgCntrl.frame = CGRect(x: 40,y: mybtn.bottom + 30, width: view.width - 10, height: 30)
     }
 
 }

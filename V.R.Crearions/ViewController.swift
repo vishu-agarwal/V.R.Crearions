@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "V.R. creations"
+        //title = "V.R. creations"
         view.addSubview(vr)
         view.addSubview(mylbl)
         view.addSubview(mybtn)

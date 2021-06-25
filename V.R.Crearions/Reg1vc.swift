@@ -140,7 +140,7 @@ class Reg1vc: UIViewController {
         view.addSubview(mylbl)
         view.addSubview(imgVieew)
         profile.delegate = self
-        title = "Personal Information"
+        //title = "Personal Information - 1"
         //profile.delegate = self
         // Do any additional setup after loading the view.
     }

@@ -112,6 +112,7 @@ class reg2VC: UIViewController {
         view.addSubview(lblskill)
         view.addSubview(pick)
         view.addSubview(dipexp)
+        //title = "Personal Information - 2"
         pick.dataSource = self
         pick.delegate = self
         pick.backgroundColor = .white
