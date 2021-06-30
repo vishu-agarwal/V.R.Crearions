@@ -13,7 +13,7 @@ class reg3Vc: UIViewController {
         let lbl = UILabel()
         lbl.text = "Choose Date To Attend Seminar :: "
         lbl.textAlignment = .center
-        lbl.textColor = .white
+        lbl.textColor = .blue
         
         return lbl
     }()
@@ -21,15 +21,15 @@ class reg3Vc: UIViewController {
         let lbl = UILabel()
         lbl.text = "Keep Profile Public ::  "
         lbl.textAlignment = .center
-        lbl.textColor = .white
+        lbl.textColor = .blue
         return lbl
     }()
     private let semDate:UIDatePicker = {
         let date = UIDatePicker()
         date.datePickerMode = .date
         date.timeZone = TimeZone(secondsFromGMT: 0)
-        //date.textcolor = .white
-        date.backgroundColor = .white
+        
+        
         return date
     }()
     
@@ -39,6 +39,7 @@ class reg3Vc: UIViewController {
         pg.numberOfPages = 3
         pg.currentPage = 2
         //pg.backgroundColor = .gray
+        pg.tintColor = .blue
         pg.addTarget(self, action: #selector(handlePgCntrl), for: .valueChanged)
         return pg
     }()
@@ -72,18 +73,14 @@ class reg3Vc: UIViewController {
         return slide
     }()
     @objc func rate(){
-        let res = Int(rating.value)
-        disprate.text = String(res)
-        DispatchQueue.main.async {
-            self.loader.isHidden = !self.loader.isHidden
-            self.loader.isHidden ? self.loader.stopAnimating() : self.loader.startAnimating()
-        }
         
+        disprate.text = String(rating.value)
     }
     private let disprate : UILabel = {
         let disp = UILabel()
         disp.font = UIFont.systemFont(ofSize: 15.0)
-        disp.textColor = .white
+        disp.text = "Give us Rating : "
+        disp.textColor = .blue
         disp.textAlignment = .center
         return disp
     }()
@@ -102,15 +99,7 @@ class reg3Vc: UIViewController {
         navigationController?.pushViewController(vc, animated: true)
     }
     //end
-    private let loader: UIActivityIndicatorView = {
-        let load = UIActivityIndicatorView()
-        
-        load.color = .white
-       // btn.addTarget(self, action: #selector(nextfunc), for: .touchUpInside)
-        load.startAnimating()
-        return load
-    }()
-    //toggle notification add label for it
+    
     private let notify : UISwitch = {
         let bell = UISwitch()
         return bell
@@ -118,27 +107,29 @@ class reg3Vc: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addSubview(mybtn)
-        view.addSubview(loader)
+        
         view.addSubview(pgCntrl)
         view.addSubview(rating)
-        //view.addSubview(semDate)
+        view.addSubview(semDate)
         view.addSubview(notify)
+        view.addSubview(lblprfl)
+        view.addSubview(disprate)
         view.addSubview(mylbl)
-        view.backgroundColor = .black
+        view.backgroundColor = .lightGray
         //title = "Basic Information"
         // Do any additional setup after loading the view.
     }
     
     
     override func viewDidLayoutSubviews() {
-        mylbl.frame = CGRect(x: 35,y:100, width: view.width - 40, height: 30)
-       // semDate.frame = CGRect(x: 20,y: mylbl.bottom + 10, width: view.width - 40, height: 70)
-        lblprfl.frame = CGRect(x: 30,y: mylbl.bottom + 20, width: view.width - 40, height: 30)
-        //notify.frame = CGRect(x: 40,y: semDate.bottom + 15, width: view.width - 80, height: 50)
-        //rating.frame = CGRect(x: 20,y: lblprfl.bottom + 10, width: view.width - 70, height: 50)
-        //loader.frame = CGRect(x: 40,y: rating.bottom + 10, width:  view.width - 30, height: 50)
-        //mybtn.frame = CGRect(x: 30, y: loader.bottom + 10,width: view.width - 20, height: 70)
-        pgCntrl.frame = CGRect(x: 40,y: mybtn.bottom + 30, width: view.width - 10, height: 30)
+        mylbl.frame = CGRect(x: 30,y:100, width: view.width - 40, height: 30)
+        semDate.frame = CGRect(x: 20,y: 170, width: view.width - 40, height: 80)
+        lblprfl.frame = CGRect(x: 10 ,y: semDate.bottom + 10, width: view.width - 150, height: 30)
+        notify.frame = CGRect(x: 230,y: semDate.bottom + 5, width: view.width - 40, height: 10)
+        disprate.frame = CGRect(x: 30,y: notify.bottom + 5, width: view.width - 50, height: 70)
+        rating.frame = CGRect(x: 20,y: disprate.bottom + 10, width: view.width - 70, height: 60)
+        mybtn.frame = CGRect(x: 20, y: rating.bottom + 20,width: view.width - 40, height: 60)
+        pgCntrl.frame = CGRect(x: 25,y: mybtn.bottom + 10, width: view.width - 30, height: 30)
     }
 
 }

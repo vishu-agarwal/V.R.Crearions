@@ -13,7 +13,7 @@ class reg41vc: UIViewController {
     private let progressing: UIProgressView = {
         let progress = UIProgressView()
         progress.setProgress(0.0, animated: true)
-        progress.progressTintColor = .white
+        progress.progressTintColor = .blue
         return progress
     }()
     private let mylbl : UILabel = {
@@ -31,8 +31,19 @@ class reg41vc: UIViewController {
         title = "Submitted ! "
         // Do any additional setup after loading the view.
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        UIView.animate(withDuration: 10.0)
+        {
+            self.progressing.setProgress(1.0, animated: true)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
+        progressing.frame = CGRect(x: 20, y: 100, width: view.width - 40, height: 60)
+        mylbl.frame = CGRect(x: 30,y: 200, width: view.width - 40, height: 50)
+        
         
     }
-
+    
 }
