@@ -25,14 +25,6 @@
 * UITabBar
 * UIImagePickerController
 
-### Ordered
-
-1. Item 1
-1. Item 2
-1. Item 3
-  1. Item 3a
-  1. Item 3b
-
 # Images
 ## UIImageView, UILabel and UIButton
 ![1](https://user-images.githubusercontent.com/59306218/124099773-7e50f700-da7b-11eb-8cb1-69eef2d45da6.png)
